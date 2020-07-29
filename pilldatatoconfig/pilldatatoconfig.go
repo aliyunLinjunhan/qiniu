@@ -75,8 +75,9 @@ func main() {
 		if err != nil {
 			if mgo.IsDup(err) {
 				xlog.Warn("insert", doc["_id"], "warn:", err)
+			} else {
+				xlog.Error("insert", doc["_id"], "err:", err)
 			}
-			xlog.Error("insert", doc["_id"], "err:", err)
 		} else {
 			xlog.Info("insert", start, "--->", end)
 		}
